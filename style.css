@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+  background: #f3f5f9;
+  color: #172033;
+}
+
+h1 {
+  color: #2255a4;
+}
+
+section {
+  background: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #00000015;
+}
+
+button {
+  padding: 12px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 6px;
+  background: #2255a4;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+
+[role="status"] {
+  font-weight: bold;
+}

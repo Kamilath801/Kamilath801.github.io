@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Géolocalisation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h1>Géolocalisation du smartphone</h1>
+  <p>Autorise l'accès à ta position pour effectuer les mesures.</p>
+
+  <label>
+    <input type="checkbox" id="precision" checked>
+    Demander une précision élevée
+  </label>
+
+  <section>
+    <h2>getCurrentPosition() : mesure ponctuelle</h2>
+    <button id="mesurer">Obtenir ma position</button>
+    <p id="etatUnique" role="status">En attente.</p>
+    <pre id="resultatUnique">Aucune mesure.</pre>
+  </section>
+
+  <section>
+    <h2>watchPosition() : suivi de la position</h2>
+    <button id="demarrer">Démarrer le suivi</button>
+    <button id="arreter" disabled>Arrêter le suivi</button>
+    <p id="etatSuivi" role="status">Suivi arrêté.</p>
+    <pre id="resultatSuivi">Aucune mesure.</pre>
+  </section>
+</body>
+</html>
