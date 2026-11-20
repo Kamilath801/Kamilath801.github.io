@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercice 2 — Carte Leaflet</title>
+
+  <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="carte.css">
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="carte.js" defer></script>
+</head>
+<body>
+  <a href="index.html">Index</a>
+  <h1>Exercice 2 — Carte Leaflet</h1>
+
+  <p id="position" role="status">Recherche de votre position…</p>
+  <p id="distance"></p>
+
+  <button id="bermudes" type="button">Voir le triangle des Bermudes</button>
+  <button id="trajet" type="button">Afficher le trajet Nice–Marseille</button>
+  <p id="etatTrajet" role="status"></p>
+
+  <div id="carte" aria-label="Carte interactive"></div>
+</body>
+</html>

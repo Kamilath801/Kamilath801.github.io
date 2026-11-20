@@ -1,69 +1,31 @@
-let suivi = null;
+const positionActuelle = document.getElementById("position");
+const suiviPosition = document.getElementById("suivi");
 
-// Afficher les données dans le bloc demandé.
-function afficher(position, bloc) {
-  const p = position.coords;
+function afficherPosition(position, bloc) {
+  const mesure = position.coords;
+  const date = new Date(position.timestamp).toLocaleString("fr-FR");
 
-  document.getElementById(bloc).textContent =
-    "Longitude : " + p.longitude + "°\n" +
-    "Latitude : " + p.latitude + "°\n" +
-    "Altitude : " + (p.altitude ?? "Non disponible") + "\n" +
-    "Précision : " + p.accuracy + " m\n" +
-    "Vitesse (m/s) : " + (p.speed ?? "Non disponible") + "\n" +
-    "Date : " + new Date(position.timestamp).toLocaleString();
+  bloc.textContent =
+    `Latitude : ${mesure.latitude}°\n` +
+    `Longitude : ${mesure.longitude}°\n` +
+    `Altitude (m) : ${mesure.altitude ?? "Non disponible"}\n` +
+    `Précision : ${mesure.accuracy.toFixed(2)} m\n` +
+    `Vitesse (m/s) : ${mesure.speed ?? "Non disponible"}\n` +
+    `Date et heure : ${date}`;
 }
 
-// Afficher une erreur.
-function erreur(e, bloc) {
-  document.getElementById(bloc).textContent =
-    "Localisation impossible : " + e.message;
+function afficherErreur(erreur, bloc) {
+  bloc.textContent = "Localisation impossible : " + erreur.message;
 }
 
-// Choisir les options de localisation.
-function options() {
-  return {
-    enableHighAccuracy: document.getElementById("precision").checked,
-    timeout: 30000,
-    maximumAge: 0
-  };
-}
+// Affiche une mesure au chargement de la page.
+navigator.geolocation.getCurrentPosition(
+  position => afficherPosition(position, positionActuelle),
+  erreur => afficherErreur(erreur, positionActuelle)
+);
 
-// Obtenir la position une seule fois.
-document.getElementById("mesurer").onclick = function () {
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      afficher(position, "resultatUnique");
-    },
-    function (e) {
-      erreur(e, "resultatUnique");
-    },
-    options()
-  );
-};
-
-// Suivre la position.
-document.getElementById("demarrer").onclick = function () {
-  suivi = navigator.geolocation.watchPosition(
-    function (position) {
-      afficher(position, "resultatSuivi");
-    },
-    function (e) {
-      erreur(e, "resultatSuivi");
-    },
-    options()
-  );
-
-  document.getElementById("etatSuivi").textContent = "Suivi démarré.";
-  document.getElementById("demarrer").disabled = true;
-  document.getElementById("arreter").disabled = false;
-};
-
-// Arrêter le suivi.
-document.getElementById("arreter").onclick = function () {
-  navigator.geolocation.clearWatch(suivi);
-  suivi = null;
-
-  document.getElementById("etatSuivi").textContent = "Suivi arrêté.";
-  document.getElementById("demarrer").disabled = false;
-  document.getElementById("arreter").disabled = true;
-};
+// Actualise le deuxième bloc à chaque nouvelle mesure.
+navigator.geolocation.watchPosition(
+  position => afficherPosition(position, suiviPosition),
+  erreur => afficherErreur(erreur, suiviPosition)
+);

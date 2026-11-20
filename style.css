@@ -1,17 +1,14 @@
-h1 {
-  color: #2255a4;
-}
-button {
-  padding: 12px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 6px;
-  background: #2255a4;
-  color: white;
-  cursor: pointer;
+body {
+  margin: 16px;
+  background: white;
+  color: black;
 }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: default;
+#position, #suivi {
+  white-space: pre-line;
+  line-height: 1.7;
+}
+
+#bermudes{
+  color:blue;
 }

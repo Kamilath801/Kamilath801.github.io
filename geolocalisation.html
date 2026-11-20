@@ -8,27 +8,10 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>Géolocalisation du smartphone</h1>
-  <p>Autorise l'accès</p>
+  <h2>Votre position actuelle</h2>
+  <p id="position">Recherche de la position…</p>
 
-  <label>
-    <input type="checkbox" id="precision" checked>
-    Demander une précision 
-  </label>
-
-  <section>
-    <h2> Mesure ponctuelle</h2>
-    <button id="mesurer">Obtenir ma position</button>
-    <p id="etatUnique" role="status">En attente.</p>
-    <pre id="resultatUnique">Aucune mesure.</pre>
-  </section>
-
-  <section>
-    <h2>Suivi de la position</h2>
-    <button id="demarrer">Démarrer le suivi</button>
-    <button id="arreter" disabled>Arrêter le suivi</button>
-    <p id="etatSuivi" role="status">Suivi arrêté.</p>
-    <pre id="resultatSuivi">Aucune mesure.</pre>
-  </section>
+  <h2>Suivi de la position</h2>
+  <p id="suivi">En attente de la première mesure…</p>
 </body>
 </html>
